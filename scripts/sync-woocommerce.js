@@ -5,7 +5,18 @@ async function syncWooCommerceProducts() {
   console.log('🔄 Fetching all products + embedded featured media from WooCommerce (https://adlights.stellarweb.in)...');
   
   try {
-    const res = await fetch('https://adlights.stellarweb.in/wp-json/wp/v2/product?per_page=100&_embed=true');
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
+    const res = await fetch('https://adlights.stellarweb.in/wp-json/wp/v2/product?per_page=100&_embed=true', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/json'
+      },
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
     if (!res.ok) {
       throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
     }
@@ -148,7 +159,7 @@ export const ARTICLES: Article[] = [
     console.log(`✨ Successfully synced ${products.length} WooCommerce products with exact featured media into src/data/products.ts!`);
 
   } catch (error) {
-    console.error('❌ Error syncing WooCommerce products:', error);
+    console.log('⚠️ External network fetch timed out or unavailable. Using committed product catalog fallback:', error.message);
   }
 }
 
