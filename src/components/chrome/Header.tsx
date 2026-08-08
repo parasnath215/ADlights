@@ -11,20 +11,28 @@ export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const dropdownCloseTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const { cartCount, setIsCartOpen, setIsSearchOpen } = useCart();
   const { wishlist } = useAdmin();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 80) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 80);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleDropdownEnter = () => {
+    if (dropdownCloseTimer.current) clearTimeout(dropdownCloseTimer.current);
+    setIsProductsDropdownOpen(true);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownCloseTimer.current = setTimeout(() => {
+      setIsProductsDropdownOpen(false);
+    }, 150);
+  };
 
   const subCategories = [
     { label: 'Hanging Lights', href: '/shop?category=Pendant' },
@@ -37,21 +45,23 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`w-full z-40 transition-all duration-300 ${
+      className={`w-full z-40 transition-all duration-300 fixed left-0 ${
         isScrolled
-          ? 'fixed top-0 left-0 bg-white/95 backdrop-blur-md border-b border-border shadow-xs py-3 text-text-primary'
-          : 'absolute top-9 left-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent py-5 text-white'
+          ? 'top-0 bg-white/95 backdrop-blur-md border-b border-border shadow-xs py-3 text-text-primary'
+          : 'top-9 bg-gradient-to-b from-black/70 via-black/40 to-transparent py-5 text-white'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Official AURORA DECOR LIGHTS Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative h-10 w-48 sm:w-56 bg-white/90 backdrop-blur-xs p-1.5 rounded-lg border border-white/20 shadow-sm">
+          <div className="relative h-11 w-48 sm:w-56 transition-transform group-hover:scale-105">
             <Image
               src="/images/aurora-decor-logo.png"
               alt="AURORA DECOR LIGHTS"
               fill
-              className="object-contain"
+              className={`object-contain transition-all duration-300 ${
+                isScrolled ? '' : 'brightness-0 invert'
+              }`}
               priority
             />
           </div>
@@ -67,8 +77,8 @@ export const Header: React.FC = () => {
           {/* Our Products with Sub-Categories Dropdown */}
           <div
             className="relative py-1 group cursor-pointer"
-            onMouseEnter={() => setIsProductsDropdownOpen(true)}
-            onMouseLeave={() => setIsProductsDropdownOpen(false)}
+            onMouseEnter={handleDropdownEnter}
+            onMouseLeave={handleDropdownLeave}
           >
             <div className="flex items-center gap-1 group">
               <span>Our Products</span>

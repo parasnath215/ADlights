@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { AnnouncementBar } from './AnnouncementBar';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { FloatingSideRail } from './FloatingSideRail';
 import { NewsletterPopup } from './NewsletterPopup';
 import { CartDrawer } from './CartDrawer';
 import { SearchModal } from './SearchModal';
@@ -33,7 +32,6 @@ export const MainLayoutContent: React.FC<{ children: React.ReactNode }> = ({ chi
       <div>
         <AnnouncementBar />
         <Header />
-        <FloatingSideRail onOpenPromo={() => setIsPromoOpen(true)} />
         <main>{children}</main>
       </div>
 

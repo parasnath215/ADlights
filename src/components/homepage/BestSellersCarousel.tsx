@@ -13,13 +13,14 @@ export const BestSellersCarousel: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
   const { addToCart, setQuickViewProduct } = useCart();
   const visibleCount = 4;
+  const maxStart = Math.max(0, PRODUCTS.length - visibleCount);
 
   const nextSlide = () => {
-    setStartIndex((prev) => (prev + 1) % (PRODUCTS.length - visibleCount + 1));
+    setStartIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setStartIndex((prev) => (prev - 1 + (PRODUCTS.length - visibleCount + 1)) % (PRODUCTS.length - visibleCount + 1));
+    setStartIndex((prev) => (prev <= 0 ? maxStart : prev - 1));
   };
 
   const visibleProducts = PRODUCTS.slice(startIndex, startIndex + visibleCount);
@@ -69,7 +70,7 @@ export const BestSellersCarousel: React.FC = () => {
                       src={imgSrc}
                       alt={product.title}
                       fill
-                      unoptimized
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     {product.badge && (

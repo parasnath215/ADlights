@@ -54,7 +54,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ images, title })
                   : 'border-border opacity-70 hover:opacity-100'
               }`}
             >
-              <Image src={img} alt={`${title} thumb ${idx + 1}`} fill className="object-cover" />
+              <Image src={img} alt={`${title} thumb ${idx + 1}`} fill sizes="80px" className="object-cover" />
             </button>
           ))}
         </div>

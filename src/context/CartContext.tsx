@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product, ProductVariant, UpgradeOption, CartItem } from '../types/commerce';
-import { PRODUCTS } from '../data/products';
 
 interface CartContextType {
   cart: CartItem[];

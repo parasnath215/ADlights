@@ -18,7 +18,7 @@ export const StickyAddToCartBar: React.FC<{ product: Product }> = ({ product }) 
         setIsVisible(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

@@ -98,8 +98,10 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [orders, setOrders] = useState<CustomerOrder[]>(INITIAL_ORDERS);
   const [wishlist, setWishlist] = useState<string[]>([]);
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
+  // Track whether localStorage has been loaded to avoid overwriting before hydration
+  const isHydrated = React.useRef(false);
 
-  // Load local storage
+  // Load local storage and mark as hydrated
   useEffect(() => {
     try {
       const savedProducts = localStorage.getItem('adlights_admin_products');
@@ -115,11 +117,14 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
     } catch {
       // Fallback
+    } finally {
+      isHydrated.current = true;
     }
   }, []);
 
-  // Save to local storage
+  // Save to local storage — only after hydration to avoid overwriting fresh state
   useEffect(() => {
+    if (!isHydrated.current) return;
     try {
       localStorage.setItem('adlights_admin_products', JSON.stringify(products));
     } catch {}

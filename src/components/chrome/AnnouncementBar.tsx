@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Sparkles } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
 const ANNOUNCEMENTS = [

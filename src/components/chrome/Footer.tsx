@@ -25,13 +25,13 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-zinc-800">
           {/* Brand Column (2 cols) */}
           <div className="lg:col-span-2 space-y-6">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="relative h-10 w-52 bg-white/90 p-1.5 rounded-lg border border-white/20">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="relative h-12 w-52 transition-transform group-hover:scale-105">
                 <Image
                   src="/images/aurora-decor-logo.png"
                   alt="AURORA DECOR LIGHTS"
                   fill
-                  className="object-contain"
+                  className="object-contain brightness-0 invert"
                 />
               </div>
             </Link>
@@ -144,7 +144,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-4">
             <span>© 2026 AURORA DECOR LIGHTS. All rights reserved.</span>
             <span>•</span>
-            <Link href="/about" className="hover:text-zinc-300">Privacy Policy</Link>
+            <Link href="/contact" className="hover:text-zinc-300">Privacy Policy</Link>
             <Link href="/contact" className="hover:text-zinc-300 font-semibold">Terms of Service</Link>
           </div>
 

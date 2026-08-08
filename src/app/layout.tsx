@@ -14,6 +14,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,800&display=swap"
+        />
+      </head>
       <body className="antialiased bg-white text-text-primary selection:bg-amber-300 selection:text-zinc-950">
         <ClientProviders>{children}</ClientProviders>
       </body>
