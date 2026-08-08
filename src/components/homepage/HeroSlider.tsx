@@ -58,7 +58,7 @@ export const HeroSlider: React.FC = () => {
 
   return (
     <section
-      className="relative w-full h-[90vh] min-h-[620px] bg-zinc-950 text-white overflow-hidden select-none cursor-grab active:cursor-grabbing"
+      className="relative w-full h-[75vh] sm:h-[85vh] min-h-[480px] sm:min-h-[620px] bg-zinc-950 text-white overflow-hidden select-none cursor-grab active:cursor-grabbing"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -75,6 +75,7 @@ export const HeroSlider: React.FC = () => {
             alt={slide.title}
             fill
             priority={index === 0}
+            sizes="100vw"
             className="object-cover brightness-75 scale-105 transition-transform duration-[10000ms] ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-black/50" />
@@ -82,37 +83,37 @@ export const HeroSlider: React.FC = () => {
       ))}
 
       {/* Hero Content Overlay */}
-      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-start pt-16">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-start pt-12 sm:pt-16">
         <div className="max-w-3xl animate-slide-up">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-6">
-            <Sparkles size={14} className="text-amber-400" />
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-pill bg-white/10 border border-white/20 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-4 sm:mb-6">
+            <Sparkles size={13} className="text-amber-400" />
             <span>Official AURORA DECOR LIGHTS Collection</span>
           </span>
 
-          <h1 className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-[1.02] text-white">
+          <h1 className="font-display font-extrabold text-3xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-[1.05] text-white">
             {HERO_SLIDES[current].title.split(HERO_SLIDES[current].highlightWord)[0]}
             <WarmUnderline>{HERO_SLIDES[current].highlightWord}</WarmUnderline>
             {HERO_SLIDES[current].title.split(HERO_SLIDES[current].highlightWord)[1]}
           </h1>
 
-          <p className="mt-6 text-base sm:text-xl text-zinc-300 font-normal max-w-xl leading-relaxed">
+          <p className="mt-4 sm:mt-6 text-xs sm:text-lg text-zinc-300 font-normal max-w-xl leading-relaxed">
             {HERO_SLIDES[current].subtitle}
           </p>
 
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-6 sm:mt-8 flex items-center gap-4">
             <Link
               href={HERO_SLIDES[current].link}
-              className="group px-8 py-4 rounded-pill bg-white text-zinc-950 font-extrabold text-xs uppercase tracking-widest hover:scale-105 hover:bg-amber-300 transition-all duration-300 flex items-center gap-3 shadow-xl"
+              className="group px-6 py-3.5 sm:px-8 sm:py-4 rounded-pill bg-white text-zinc-950 font-extrabold text-[11px] sm:text-xs uppercase tracking-widest hover:scale-105 hover:bg-amber-300 transition-all duration-300 flex items-center gap-2.5 shadow-xl"
             >
               <span>{HERO_SLIDES[current].cta}</span>
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
       </div>
 
       {/* Indicator Dots Bottom-Center */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5">
         {HERO_SLIDES.map((_, i) => (
           <button
             key={i}
@@ -126,21 +127,21 @@ export const HeroSlider: React.FC = () => {
       </div>
 
       {/* Prev/Next Arrows Bottom Corners */}
-      <div className="absolute bottom-6 left-6 right-6 z-30 flex justify-between pointer-events-none">
+      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-30 flex justify-between pointer-events-none">
         <button
           onClick={handlePrev}
-          className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
+          className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
           aria-label="Previous Slide"
         >
-          <ChevronLeft size={20} />
+          <ChevronLeft size={18} />
         </button>
 
         <button
           onClick={handleNext}
-          className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
+          className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
           aria-label="Next Slide"
         >
-          <ChevronRight size={20} />
+          <ChevronRight size={18} />
         </button>
       </div>
     </section>

@@ -31,17 +31,17 @@ export const BeforeAfterSlider: React.FC = () => {
   }, [isDragging, handleMove]);
 
   return (
-    <section id="before-after" className="py-24 bg-white border-b border-border select-none">
+    <section id="before-after" className="py-12 sm:py-24 bg-white border-b border-border select-none overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs uppercase tracking-widest text-text-secondary font-bold">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest text-text-secondary font-bold">
             Interactive Light Lab
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-text-primary mt-2">
+          <h2 className="font-display font-extrabold text-2xl sm:text-5xl uppercase tracking-tight text-text-primary mt-1.5 leading-tight">
             Experience the <WarmUnderline>Atmospheric Difference</WarmUnderline>
           </h2>
-          <p className="text-sm text-text-secondary mt-3">
+          <p className="text-xs sm:text-sm text-text-secondary mt-2">
             Drag the vertical handle left or right to compare natural daylight vs. the warm golden ambient glow of ADlights optics.
           </p>
         </div>
@@ -56,19 +56,19 @@ export const BeforeAfterSlider: React.FC = () => {
           onTouchStart={() => setIsDragging(true)}
           onTouchEnd={() => setIsDragging(false)}
           onTouchMove={handleTouchMove}
-          className="relative w-full h-[520px] sm:h-[600px] rounded-card overflow-hidden border border-border shadow-2xl cursor-ew-resize touch-none"
+          className="relative w-full h-[340px] sm:h-[500px] lg:h-[600px] rounded-card overflow-hidden border border-border shadow-xl cursor-ew-resize touch-none"
         >
           {/* Right Image: Light ON (2700K Warm Glow) */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1600&q=90"
+              src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=80"
               alt="Light ON Warm Glow"
               fill
+              sizes="(max-width: 768px) 100vw, 80vw"
               className="object-cover brightness-110 saturate-125"
             />
-            {/* Warm ambient radial glow overlay */}
             <div className="absolute inset-0 bg-amber-500/10 mix-blend-color-dodge" />
-            <div className="absolute bottom-6 right-6 z-10 px-4 py-2 rounded-pill bg-amber-500 text-zinc-950 font-extrabold text-xs uppercase tracking-wider shadow-lg flex items-center gap-2">
+            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-pill bg-amber-500 text-zinc-950 font-extrabold text-[10px] sm:text-xs uppercase tracking-wider shadow-lg flex items-center gap-1.5">
               <Sun size={14} />
               <span>2700K Warm Glow ON</span>
             </div>
@@ -80,12 +80,13 @@ export const BeforeAfterSlider: React.FC = () => {
             style={{ width: `${sliderPos}%` }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1600&q=90"
+              src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1200&q=80"
               alt="Light OFF Daylight"
               fill
+              sizes="(max-width: 768px) 100vw, 80vw"
               className="object-cover brightness-70 grayscale-25"
             />
-            <div className="absolute bottom-6 left-6 z-10 px-4 py-2 rounded-pill bg-zinc-950/90 text-white font-extrabold text-xs uppercase tracking-wider backdrop-blur-md border border-white/20 flex items-center gap-2">
+            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-10 px-3 py-1.5 sm:px-4 sm:py-2 rounded-pill bg-zinc-950/90 text-white font-extrabold text-[10px] sm:text-xs uppercase tracking-wider backdrop-blur-md border border-white/20 flex items-center gap-1.5">
               <Moon size={14} />
               <span>Daylight Standby OFF</span>
             </div>
@@ -97,11 +98,11 @@ export const BeforeAfterSlider: React.FC = () => {
             style={{ left: `${sliderPos}%` }}
           >
             <div
-              className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-zinc-950 text-white border-2 border-white flex items-center justify-center shadow-2xl transition-transform duration-150 ${
+              className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-950 text-white border-2 border-white flex items-center justify-center shadow-2xl transition-transform duration-150 ${
                 isDragging ? 'scale-125 bg-amber-400 text-zinc-950' : 'hover:scale-110'
               }`}
             >
-              <SlidersHorizontal size={18} />
+              <SlidersHorizontal size={16} />
             </div>
           </div>
         </div>
