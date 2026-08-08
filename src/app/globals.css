@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --bg-muted: #f7f7f5;      /* light gray sections */
+  --text-primary: #171717;
+  --text-secondary: #6b6b6b;
+  --accent: #171717;         /* black-on-white, high contrast, minimal */
+  --accent-soft: #f2c98a;    /* warm gold/tan underline accent */
+  --border: #e8e8e6;
+  --radius-pill: 999px;      /* buttons are full-pill shaped */
+  --radius-card: 12px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-base: 350ms;
+}
+
+html {
+  scroll-behavior: smooth;
+  color: var(--text-primary);
+  background-color: var(--bg);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Pill button hover scale spring micro-interaction */
+.btn-pill {
+  border-radius: var(--radius-pill);
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 180ms ease-out;
+}
+.btn-pill:hover {
+  transform: scale(1.025);
+}

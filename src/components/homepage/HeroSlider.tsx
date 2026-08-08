@@ -1,0 +1,148 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
+import { WarmUnderline } from '../ui/WarmUnderline';
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    title: 'Aurora Teardrop Glass Pendants',
+    subtitle: 'Hand-blown amber teardrop pendants with warm tungsten filaments engineered for pure atmospheric distinction.',
+    cta: 'Explore Hanging Collection',
+    link: '/shop?category=Pendant',
+    image: '/images/hero-pendant-banner.png',
+    highlightWord: 'Glass Pendants'
+  },
+  {
+    id: 2,
+    title: 'Upgrade Your Lighting Game',
+    subtitle: 'Transform ordinary spaces into elegant experiences with thoughtfully designed lighting solutions. From cozy homes to modern workspaces.',
+    cta: 'Explore All Fixtures',
+    link: '/shop',
+    image: 'https://adlights.stellarweb.in/wp-content/uploads/2026/03/Upgrade-Your-Lighting-Game.png',
+    highlightWord: 'Lighting Game'
+  },
+  {
+    id: 3,
+    title: 'ADLIGHTS Architectural Luminaires',
+    subtitle: 'Discover fixtures that bring warmth, style, and functionality to every corner with IP54 outdoor & interior step lights.',
+    cta: 'Shop Recessed Step Lights',
+    link: '/shop?category=Architectural',
+    image: 'https://adlights.stellarweb.in/wp-content/uploads/2026/03/AD-Lights.png',
+    highlightWord: 'Luminaires'
+  }
+];
+
+export const HeroSlider: React.FC = () => {
+  const [current, setCurrent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isHovered]);
+
+  const handlePrev = () => {
+    setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const handleNext = () => {
+    setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  return (
+    <section
+      className="relative w-full h-[90vh] min-h-[620px] bg-zinc-950 text-white overflow-hidden select-none cursor-grab active:cursor-grabbing"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Background Slides */}
+      {HERO_SLIDES.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === current ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+          }`}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            priority={index === 0}
+            className="object-cover brightness-75 scale-105 transition-transform duration-[10000ms] ease-out"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-black/50" />
+        </div>
+      ))}
+
+      {/* Hero Content Overlay */}
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-start pt-16">
+        <div className="max-w-3xl animate-slide-up">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-6">
+            <Sparkles size={14} className="text-amber-400" />
+            <span>Official AURORA DECOR LIGHTS Collection</span>
+          </span>
+
+          <h1 className="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-[1.02] text-white">
+            {HERO_SLIDES[current].title.split(HERO_SLIDES[current].highlightWord)[0]}
+            <WarmUnderline>{HERO_SLIDES[current].highlightWord}</WarmUnderline>
+            {HERO_SLIDES[current].title.split(HERO_SLIDES[current].highlightWord)[1]}
+          </h1>
+
+          <p className="mt-6 text-base sm:text-xl text-zinc-300 font-normal max-w-xl leading-relaxed">
+            {HERO_SLIDES[current].subtitle}
+          </p>
+
+          <div className="mt-8 flex items-center gap-4">
+            <Link
+              href={HERO_SLIDES[current].link}
+              className="group px-8 py-4 rounded-pill bg-white text-zinc-950 font-extrabold text-xs uppercase tracking-widest hover:scale-105 hover:bg-amber-300 transition-all duration-300 flex items-center gap-3 shadow-xl"
+            >
+              <span>{HERO_SLIDES[current].cta}</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Indicator Dots Bottom-Center */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+        {HERO_SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current ? 'w-8 bg-amber-400' : 'w-2 bg-white/40 hover:bg-white'
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Prev/Next Arrows Bottom Corners */}
+      <div className="absolute bottom-6 left-6 right-6 z-30 flex justify-between pointer-events-none">
+        <button
+          onClick={handlePrev}
+          className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
+          aria-label="Previous Slide"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <button
+          onClick={handleNext}
+          className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
+          aria-label="Next Slide"
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+    </section>
+  );
+};
