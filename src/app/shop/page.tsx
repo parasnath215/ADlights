@@ -130,35 +130,49 @@ export default function ShopPage() {
 
   return (
     <div className="pt-24 sm:pt-28 pb-16 sm:pb-24 bg-white min-h-screen">
-      {/* Architectural Ambient Hero Header */}
-      <div className="bg-zinc-950 text-white py-12 sm:py-16 border-b border-zinc-800 relative overflow-hidden">
+      {/* Architectural Ambient Hero Header with Clean Banner Image */}
+      <div className="relative bg-zinc-950 text-white py-16 sm:py-20 border-b border-zinc-800 overflow-hidden">
+        {/* Banner Background Image */}
+        <Image
+          src="/images/shop-hero-banner.png"
+          alt="AURORA Architectural Luminaires Collection Banner"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center brightness-75 scale-105 transition-transform duration-[10000ms] ease-out"
+        />
+
+        {/* Ambient Dark Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/75 to-zinc-950/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/80 via-transparent to-zinc-950/80" />
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-pill bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-3">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-pill bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-3 shadow-lg">
             <Sparkles size={14} className="text-amber-400" /> Architectural Lighting Catalog
           </span>
-          <h1 className="font-display font-extrabold text-3xl sm:text-6xl uppercase tracking-tighter leading-tight">
+          <h1 className="font-display font-extrabold text-3xl sm:text-6xl uppercase tracking-tighter leading-tight drop-shadow-md">
             Museum-Grade <WarmUnderline>Luminaires & Arcs</WarmUnderline>
           </h1>
-          <p className="text-xs sm:text-base text-zinc-400 mt-2 max-w-2xl mx-auto font-normal">
+          <p className="text-xs sm:text-base text-zinc-200 mt-2 max-w-2xl mx-auto font-normal drop-shadow-sm">
             Precision-engineered step lights, mouth-blown crystal chandeliers, and IP65 architectural sconces.
           </p>
 
           {/* Quick Metrics Strip */}
-          <div className="mt-8 pt-6 border-t border-zinc-800/80 flex items-center justify-center gap-8 text-xs text-zinc-400">
+          <div className="mt-8 pt-6 border-t border-white/15 backdrop-blur-xs flex items-center justify-center gap-8 text-xs text-zinc-300">
             <div>
-              <span className="font-mono font-bold text-lg text-white block">{activeProducts.length}</span>
-              <span className="text-[10px] uppercase tracking-wider text-zinc-500">Catalog Fixtures</span>
+              <span className="font-mono font-bold text-lg text-white block drop-shadow-sm">{activeProducts.length}</span>
+              <span className="text-[10px] uppercase tracking-wider text-zinc-300 font-bold">Catalog Fixtures</span>
             </div>
-            <div className="h-6 w-[1px] bg-zinc-800" />
+            <div className="h-6 w-[1px] bg-white/20" />
             <div>
-              <span className="font-mono font-bold text-lg text-white block">CRI 98+</span>
-              <span className="text-[10px] uppercase tracking-wider text-zinc-500">True Spectrum Optics</span>
+              <span className="font-mono font-bold text-lg text-white block drop-shadow-sm">CRI 98+</span>
+              <span className="text-[10px] uppercase tracking-wider text-zinc-300 font-bold">True Spectrum Optics</span>
             </div>
-            <div className="h-6 w-[1px] bg-zinc-800" />
+            <div className="h-6 w-[1px] bg-white/20" />
             <div>
-              <span className="font-mono font-bold text-lg text-white block">IP65</span>
-              <span className="text-[10px] uppercase tracking-wider text-zinc-500">Weather Sealed</span>
+              <span className="font-mono font-bold text-lg text-white block drop-shadow-sm">IP65</span>
+              <span className="text-[10px] uppercase tracking-wider text-zinc-300 font-bold">Weather Sealed</span>
             </div>
           </div>
         </div>

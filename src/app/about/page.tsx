@@ -23,39 +23,53 @@ import { TrustBadges } from '../../components/homepage/TrustBadges';
 export default function AboutPage() {
   return (
     <div className="pt-24 sm:pt-28 pb-16 sm:pb-24 bg-white min-h-screen">
-      {/* Editorial Luxury Ambient Hero Header */}
-      <div className="bg-zinc-950 text-white py-20 sm:py-28 border-b border-zinc-800 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+      {/* Editorial Luxury Ambient Hero Header with Clean Banner Image */}
+      <div className="relative bg-zinc-950 text-white py-24 sm:py-32 border-b border-zinc-800 overflow-hidden">
+        {/* Banner Background Image */}
+        <Image
+          src="/images/about-hero-banner.png"
+          alt="AURORA Architectural Ambient Light Atelier"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center brightness-75 scale-105 transition-transform duration-[10000ms] ease-out"
+        />
+
+        {/* Ambient Dark Gradient Overlays for High Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/75 to-zinc-950/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/80 via-transparent to-zinc-950/80" />
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-6 shadow-lg">
             <Sparkles size={14} className="text-amber-400" /> The Atelier & Philosophy
           </span>
 
-          <h1 className="font-display font-extrabold text-4xl sm:text-7xl uppercase tracking-tighter leading-none max-w-4xl mx-auto">
+          <h1 className="font-display font-extrabold text-4xl sm:text-7xl uppercase tracking-tighter leading-none max-w-4xl mx-auto drop-shadow-md">
             Sculpting Space Through <WarmUnderline>Architectural Light</WarmUnderline>
           </h1>
 
-          <p className="text-sm sm:text-xl text-zinc-300 mt-6 max-w-2xl mx-auto font-normal leading-relaxed">
+          <p className="text-sm sm:text-xl text-zinc-200 mt-6 max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-sm">
             AURORA DECOR LIGHTS designs museum-grade foot lights, mouth-blown crystal chandeliers, and IP65 linear fixtures engineered for warm, atmospheric distinction.
           </p>
 
           {/* Quick Metrics Bar */}
-          <div className="mt-12 pt-8 border-t border-zinc-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="mt-12 pt-8 border-t border-white/15 backdrop-blur-xs grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div>
-              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400 block">50,000+</span>
-              <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">L70 Rated Operating Hours</span>
+              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400 block drop-shadow-sm">50,000+</span>
+              <span className="text-[11px] uppercase tracking-wider text-zinc-300 font-bold">L70 Rated Operating Hours</span>
             </div>
             <div>
-              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-white block">CRI 98+</span>
-              <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">True Spectrum Optics</span>
+              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-white block drop-shadow-sm">CRI 98+</span>
+              <span className="text-[11px] uppercase tracking-wider text-zinc-300 font-bold">True Spectrum Optics</span>
             </div>
             <div>
-              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400 block">IP65</span>
-              <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Weatherproof Engineering</span>
+              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-amber-400 block drop-shadow-sm">IP65</span>
+              <span className="text-[11px] uppercase tracking-wider text-zinc-300 font-bold">Weatherproof Engineering</span>
             </div>
             <div>
-              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-white block">5-Year</span>
-              <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-bold">Electronics Guarantee</span>
+              <span className="font-mono font-extrabold text-3xl sm:text-4xl text-white block drop-shadow-sm">5-Year</span>
+              <span className="text-[11px] uppercase tracking-wider text-zinc-300 font-bold">Electronics Guarantee</span>
             </div>
           </div>
         </div>
