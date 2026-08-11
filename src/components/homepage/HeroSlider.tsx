@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Instagram, Twitter, Facebook, Youtube, Tag } from 'lucide-react';
 import { WarmUnderline } from '../ui/WarmUnderline';
 
 const HERO_SLIDES = [
@@ -44,7 +44,7 @@ export const HeroSlider: React.FC = () => {
     if (isHovered) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 6000);
+    }, 3000);
     return () => clearInterval(timer);
   }, [isHovered]);
 
@@ -62,6 +62,63 @@ export const HeroSlider: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Left Side Rail (Social Icons + GET 20% OFF vertical badge) */}
+      <div className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center bg-zinc-950/90 text-white rounded-pill p-2 shadow-2xl backdrop-blur-md border border-zinc-800/80 w-[42px] transition-all hover:bg-zinc-950">
+        <div className="flex flex-col gap-3 py-2 text-zinc-400">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-amber-400 transition-colors p-1"
+            aria-label="Instagram"
+          >
+            <Instagram size={15} />
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-amber-400 transition-colors p-1"
+            aria-label="Twitter X"
+          >
+            <Twitter size={15} />
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-amber-400 transition-colors p-1"
+            aria-label="Facebook"
+          >
+            <Facebook size={15} />
+          </a>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-amber-400 transition-colors p-1"
+            aria-label="YouTube"
+          >
+            <Youtube size={15} />
+          </a>
+        </div>
+
+        <div className="w-5 h-[1px] bg-zinc-800 my-2" />
+
+        <button
+          onClick={() => {
+            alert('Use promo code AD20 for 20% OFF your order!');
+          }}
+          className="group relative flex flex-col items-center py-3 text-amber-300 hover:text-white transition-colors cursor-pointer"
+          aria-label="Get 20% Discount"
+        >
+          <Tag size={14} className="mb-2 text-amber-400 group-hover:scale-110 transition-transform" />
+          <span className="[writing-mode:vertical-rl] rotate-180 text-[10px] font-bold tracking-widest uppercase whitespace-nowrap">
+            GET 20% OFF
+          </span>
+        </button>
+      </div>
+
       {/* Background Slides */}
       {HERO_SLIDES.map((slide, index) => (
         <div
@@ -83,7 +140,7 @@ export const HeroSlider: React.FC = () => {
       ))}
 
       {/* Hero Content Overlay */}
-      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-start pt-12 sm:pt-16">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pl-16 sm:pl-20 lg:pl-24 flex flex-col justify-center items-start pt-12 sm:pt-16">
         <div className="max-w-3xl animate-slide-up">
           <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-pill bg-white/10 border border-white/20 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-4 sm:mb-6">
             <Sparkles size={13} className="text-amber-400" />

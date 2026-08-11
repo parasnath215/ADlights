@@ -34,7 +34,7 @@ export const BestSellersCarousel: React.FC = () => {
               Curated Architectural Selection
             </span>
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-text-primary mt-1">
-              Top Rated <WarmUnderline>Best Sellers</WarmUnderline>
+              <WarmUnderline>Best Seller</WarmUnderline>
             </h2>
           </div>
 

@@ -45,10 +45,10 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`w-full z-40 transition-all duration-300 fixed left-0 ${
+      className={`w-full z-40 transition-all duration-300 fixed left-0 top-0 ${
         isScrolled
-          ? 'top-0 bg-white/95 backdrop-blur-md border-b border-border shadow-xs py-3 text-text-primary'
-          : 'top-9 bg-gradient-to-b from-black/70 via-black/40 to-transparent py-5 text-white'
+          ? 'bg-white/95 backdrop-blur-md border-b border-border shadow-xs py-3 text-text-primary'
+          : 'bg-gradient-to-b from-black/70 via-black/40 to-transparent py-5 text-white'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">

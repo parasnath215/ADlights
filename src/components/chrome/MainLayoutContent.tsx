@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AnnouncementBar } from './AnnouncementBar';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { NewsletterPopup } from './NewsletterPopup';
@@ -30,7 +29,6 @@ export const MainLayoutContent: React.FC<{ children: React.ReactNode }> = ({ chi
   return (
     <div className="min-h-screen flex flex-col justify-between relative">
       <div>
-        <AnnouncementBar />
         <Header />
         <main>{children}</main>
       </div>
