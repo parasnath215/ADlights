@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
                   src="/images/aurora-decor-logo.png"
                   alt="AURORA DECOR LIGHTS"
                   fill
-                  className="object-contain brightness-0 invert"
+                  className="object-contain"
                 />
               </div>
             </Link>

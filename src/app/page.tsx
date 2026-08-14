@@ -32,11 +32,11 @@ export default function HomePage() {
       {/* 6. Architect & Trade Consultation Program (High value replacement for generic countdown) */}
       <CountdownBanner />
 
-      {/* 7. Official Brand Partners Marquee Slider (Moved above Reviews) */}
-      <BrandPartners />
-
-      {/* 8. Verified Customer Reviews (3 reviews in one screen, scrollable slider) */}
+      {/* 7. Verified Customer Reviews */}
       <TestimonialSlider />
+
+      {/* 8. Official Brand Partners Marquee Slider */}
+      <BrandPartners />
 
       {/* 9. Trust Badges Strip */}
       <TrustBadges />

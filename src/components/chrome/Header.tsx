@@ -52,84 +52,85 @@ export const Header: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Official AURORA DECOR LIGHTS Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative h-11 w-48 sm:w-56 transition-transform group-hover:scale-105">
-            <Image
-              src="/images/aurora-decor-logo.png"
-              alt="AURORA DECOR LIGHTS"
-              fill
-              className={`object-contain transition-all duration-300 ${
-                isScrolled ? '' : 'brightness-0 invert'
-              }`}
-              priority
-            />
-          </div>
-        </Link>
-
-        {/* Centered Navigation Menu: Home, Our Products (sub categories), About Us, Contact Us */}
-        <nav className="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider">
-          <Link href="/" className="relative py-1 group">
-            Home
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-current scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+        {/* Left Side: Logo & Navigation Menu Aligned Left */}
+        <div className="flex items-center gap-8 lg:gap-10">
+          {/* Official AURORA DECOR LIGHTS Logo */}
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
+            <div className="relative h-11 w-48 sm:w-56 transition-transform group-hover:scale-105">
+              <Image
+                src="/images/aurora-decor-logo.png"
+                alt="AURORA DECOR LIGHTS"
+                fill
+                className="object-contain transition-all duration-300"
+                priority
+              />
+            </div>
           </Link>
 
-          {/* Our Products with Sub-Categories Dropdown */}
-          <div
-            className="relative py-1 group cursor-pointer"
-            onMouseEnter={handleDropdownEnter}
-            onMouseLeave={handleDropdownLeave}
-          >
-            <div className="flex items-center gap-1 group">
-              <span>Our Products</span>
-              <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
+          {/* Left-Aligned Navigation Menu: Home, Our Products (sub categories), About Us, Contact Us */}
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider">
+            <Link href="/" className="relative py-1 group">
+              Home
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-current scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+            </Link>
+
+            {/* Our Products with Sub-Categories Dropdown */}
+            <div
+              className="relative py-1 group cursor-pointer"
+              onMouseEnter={handleDropdownEnter}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <div className="flex items-center gap-1 group">
+                <span>Our Products</span>
+                <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
+              </div>
+
+              {/* Dropdown Menu */}
+              {isProductsDropdownOpen && (
+                <div className="absolute top-full left-0 w-64 bg-zinc-950 text-white rounded-card shadow-2xl p-4 border border-zinc-800 space-y-2 animate-fade-in text-xs uppercase tracking-wider">
+                  {subCategories.map((sub, idx) => (
+                    <Link
+                      key={idx}
+                      href={sub.href}
+                      className="block p-2.5 rounded-lg hover:bg-zinc-900 hover:text-amber-400 font-bold transition-colors"
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                  <div className="pt-2 border-t border-zinc-800">
+                    <Link
+                      href="/shop"
+                      className="block p-2 text-center rounded-pill bg-amber-400 text-zinc-950 font-extrabold"
+                    >
+                      View All Products →
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
 
-            {/* Dropdown Menu */}
-            {isProductsDropdownOpen && (
-              <div className="absolute top-full left-0 w-64 bg-zinc-950 text-white rounded-card shadow-2xl p-4 border border-zinc-800 space-y-2 animate-fade-in text-xs uppercase tracking-wider">
-                {subCategories.map((sub, idx) => (
-                  <Link
-                    key={idx}
-                    href={sub.href}
-                    className="block p-2.5 rounded-lg hover:bg-zinc-900 hover:text-amber-400 font-bold transition-colors"
-                  >
-                    {sub.label}
-                  </Link>
-                ))}
-                <div className="pt-2 border-t border-zinc-800">
-                  <Link
-                    href="/shop"
-                    className="block p-2 text-center rounded-pill bg-amber-400 text-zinc-950 font-extrabold"
-                  >
-                    View All Products →
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
+            <Link href="/about" className="relative py-1 group">
+              About Us
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-current scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+            </Link>
 
-          <Link href="/about" className="relative py-1 group">
-            About Us
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-current scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
-          </Link>
+            <Link href="/contact" className="relative py-1 group">
+              Contact Us
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-current scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+            </Link>
 
-          <Link href="/contact" className="relative py-1 group">
-            Contact Us
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-current scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
-          </Link>
-
-          <Link
-            href="/shop?badge=Best Seller"
-            className={`px-4 py-1.5 rounded-pill text-[11px] font-extrabold uppercase tracking-widest transition-all duration-200 ${
-              isScrolled
-                ? 'border border-zinc-950 hover:bg-zinc-950 hover:text-white'
-                : 'border border-white/80 bg-white/10 hover:bg-white hover:text-zinc-950 backdrop-blur-xs'
-            }`}
-          >
-            Best Sellers ✦
-          </Link>
-        </nav>
+            <Link
+              href="/shop?badge=Best Seller"
+              className={`px-4 py-1.5 rounded-pill text-[11px] font-extrabold uppercase tracking-widest transition-all duration-200 ${
+                isScrolled
+                  ? 'border border-zinc-950 hover:bg-zinc-950 hover:text-white'
+                  : 'border border-white/80 bg-white/10 hover:bg-white hover:text-zinc-950 backdrop-blur-xs'
+              }`}
+            >
+              Best Sellers ✦
+            </Link>
+          </nav>
+        </div>
 
         {/* Right Icon Cluster */}
         <div className="flex items-center gap-3">

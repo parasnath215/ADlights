@@ -90,25 +90,25 @@ export const CategoriesSection: React.FC = () => {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-black/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/75 to-black/30" />
               </div>
 
               {/* Top Tag: Fixture Count */}
               <div className="relative z-10 flex justify-between items-center w-full">
-                <span className="px-3 py-1 rounded-pill bg-white/90 text-zinc-950 text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-xs shadow-xs">
+                <span className="px-3 py-1 rounded-pill bg-white/95 text-zinc-950 text-[11px] font-extrabold uppercase tracking-wider backdrop-blur-xs shadow-md">
                   {cat.count}
                 </span>
-                <div className="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center backdrop-blur-md group-hover:bg-amber-400 group-hover:text-zinc-950 transition-colors">
+                <div className="w-8 h-8 rounded-full bg-white/20 text-white flex items-center justify-center backdrop-blur-md group-hover:bg-amber-400 group-hover:text-zinc-950 transition-colors shadow-md">
                   <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </div>
 
               {/* Bottom Details */}
               <div className="relative z-10 text-white">
-                <h3 className="font-display font-extrabold text-xl uppercase tracking-tight group-hover:text-amber-300 transition-colors">
+                <h3 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tight text-white group-hover:text-amber-300 transition-colors drop-shadow-md leading-tight">
                   {cat.title}
                 </h3>
-                <p className="text-xs text-zinc-300 mt-1 font-normal line-clamp-2">
+                <p className="text-xs sm:text-sm text-zinc-100 mt-2 font-medium line-clamp-2 drop-shadow-md leading-relaxed">
                   {cat.subtext}
                 </p>
               </div>

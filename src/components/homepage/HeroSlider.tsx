@@ -62,8 +62,8 @@ export const HeroSlider: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Left Side Rail (Social Icons + GET 20% OFF vertical badge) */}
-      <div className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center bg-zinc-950/90 text-white rounded-pill p-2 shadow-2xl backdrop-blur-md border border-zinc-800/80 w-[42px] transition-all hover:bg-zinc-950">
+      {/* Left Side Rail (Social Icons + GET 20% OFF vertical badge - 35% Transparent) */}
+      <div className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 flex flex-col items-center bg-zinc-950/65 text-white rounded-pill p-2 shadow-2xl backdrop-blur-md border border-zinc-800/80 w-[40px] sm:w-[42px] transition-all hover:bg-zinc-950/80">
         <div className="flex flex-col gap-3 py-2 text-zinc-400">
           <a
             href="https://instagram.com"
@@ -140,14 +140,14 @@ export const HeroSlider: React.FC = () => {
       ))}
 
       {/* Hero Content Overlay */}
-      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pl-16 sm:pl-20 lg:pl-24 flex flex-col justify-center items-start pt-12 sm:pt-16">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pl-14 sm:pl-20 lg:pl-24 flex flex-col justify-center items-start pt-12 sm:pt-16 max-w-full overflow-hidden">
         <div className="max-w-3xl animate-slide-up">
           <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-pill bg-white/10 border border-white/20 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-4 sm:mb-6">
             <Sparkles size={13} className="text-amber-400" />
             <span>Official AURORA DECOR LIGHTS Collection</span>
           </span>
 
-          <h1 className="font-display font-extrabold text-3xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-[1.05] text-white">
+          <h1 className="font-display font-extrabold text-2xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-[1.05] text-white break-words">
             {HERO_SLIDES[current].title.split(HERO_SLIDES[current].highlightWord)[0]}
             <WarmUnderline>{HERO_SLIDES[current].highlightWord}</WarmUnderline>
             {HERO_SLIDES[current].title.split(HERO_SLIDES[current].highlightWord)[1]}
