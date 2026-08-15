@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, ShoppingBag, Eye } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ShoppingBag, Eye, Sparkles } from 'lucide-react';
 import { PRODUCTS } from '../../data/products';
 import { useCart } from '../../context/CartContext';
 import { RatingStars } from '../ui/RatingStars';
@@ -11,9 +11,18 @@ import { WarmUnderline } from '../ui/WarmUnderline';
 
 export const BestSellersCarousel: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const { addToCart, setQuickViewProduct } = useCart();
   const visibleCount = 4;
   const maxStart = Math.max(0, PRODUCTS.length - visibleCount);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      setStartIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [isHovered, maxStart]);
 
   const nextSlide = () => {
     setStartIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
@@ -26,19 +35,26 @@ export const BestSellersCarousel: React.FC = () => {
   const visibleProducts = PRODUCTS.slice(startIndex, startIndex + visibleCount);
 
   return (
-    <section className="py-24 bg-bg-muted border-b border-border select-none">
+    <section
+      className="py-24 bg-bg-muted border-b border-border select-none overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
-          <div>
-            <span className="text-xs uppercase tracking-widest text-text-secondary font-bold">
-              Curated Architectural Selection
-            </span>
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-text-primary mt-1">
-              <WarmUnderline>Best Seller</WarmUnderline>
-            </h2>
-          </div>
+        {/* Centered Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-white border border-border text-xs font-bold uppercase tracking-widest text-text-secondary shadow-xs mb-3">
+            <Sparkles size={13} className="text-amber-500" /> Curated Architectural Selection
+          </span>
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-text-primary mt-1">
+            <WarmUnderline>Best Seller</WarmUnderline>
+          </h2>
+          <p className="text-xs sm:text-sm text-text-secondary mt-2">
+            Explore our most sought-after luminaires, mouth-blown pendants, and architectural sconces.
+          </p>
 
-          <div className="flex items-center gap-2">
+          {/* Carousel Arrows Centered Below Header */}
+          <div className="flex items-center justify-center gap-3 mt-6">
             <button
               onClick={prevSlide}
               className="p-3 rounded-full bg-white border border-border text-zinc-950 hover:bg-zinc-950 hover:text-white transition-colors shadow-xs"

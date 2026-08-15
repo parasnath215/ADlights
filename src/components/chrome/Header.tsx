@@ -58,7 +58,7 @@ export const Header: React.FC = () => {
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             <div className="relative h-11 w-48 sm:w-56 transition-transform group-hover:scale-105">
               <Image
-                src="/images/aurora-decor-logo.png"
+                src={isScrolled ? '/images/aurora-decor-logo.png' : '/images/logo-1.png'}
                 alt="AURORA DECOR LIGHTS"
                 fill
                 className="object-contain transition-all duration-300"

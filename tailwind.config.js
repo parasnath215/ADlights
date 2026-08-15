@@ -27,8 +27,8 @@ module.exports = {
         card: "var(--radius-card)",
       },
       fontFamily: {
-        display: ["'Plus Jakarta Sans'", "sans-serif"],
-        sans: ["'Inter'", "sans-serif"],
+        display: ["'Plus Jakarta Sans'", "'Inter'", "sans-serif"],
+        sans: ["'Plus Jakarta Sans'", "'Inter'", "sans-serif"],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',

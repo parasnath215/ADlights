@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
             <Link href="/" className="flex items-center gap-2 group">
               <div className="relative h-12 w-52 transition-transform group-hover:scale-105">
                 <Image
-                  src="/images/aurora-decor-logo.png"
+                  src="/images/logo-1.png"
                   alt="AURORA DECOR LIGHTS"
                   fill
                   className="object-contain"

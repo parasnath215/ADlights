@@ -110,23 +110,21 @@ export const TestimonialSlider: React.FC = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-14">
-          <div>
-            <div className="flex items-center gap-2 text-amber-400 mb-2 text-xs font-bold uppercase tracking-widest">
-              <Sparkles size={14} />
-              <span>Verified Customer Reviews</span>
-            </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-white">
-              What Our Clients <WarmUnderline>Say</WarmUnderline>
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-400 mt-2">
-              Rated <strong className="text-amber-400 font-mono">4.9 / 5.0</strong> based on 480+ verified architectural projects across India.
-            </p>
-          </div>
+        {/* Centered Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="inline-flex items-center gap-2 text-amber-400 mb-3 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-pill bg-zinc-900 border border-zinc-800">
+            <Sparkles size={14} />
+            <span>Verified Customer Reviews</span>
+          </span>
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-white mt-1">
+            What Our Clients <WarmUnderline>Say</WarmUnderline>
+          </h2>
+          <p className="text-xs sm:text-sm text-zinc-400 mt-2">
+            Rated <strong className="text-amber-400 font-mono">4.9 / 5.0</strong> based on 480+ verified architectural projects across India.
+          </p>
 
-          {/* Carousel Arrows */}
-          <div className="flex items-center gap-3">
+          {/* Carousel Arrows Centered Below Header */}
+          <div className="flex items-center justify-center gap-3 mt-6">
             <button
               onClick={handlePrev}
               className="p-3 rounded-full bg-zinc-900 border border-zinc-800 text-white hover:bg-amber-400 hover:text-zinc-950 transition-colors shadow-lg"
