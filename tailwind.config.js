@@ -32,6 +32,7 @@ module.exports = {
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',
+        'marquee-slow': 'marquee 45s linear infinite',
         'fade-in': 'fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         'slide-up': 'slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
       },
