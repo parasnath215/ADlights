@@ -12,17 +12,18 @@ import { WarmUnderline } from '../ui/WarmUnderline';
 export const BestSellersCarousel: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
   const { addToCart, setQuickViewProduct } = useCart();
   const visibleCount = 4;
   const maxStart = Math.max(0, PRODUCTS.length - visibleCount);
 
   useEffect(() => {
-    if (isHovered) return;
+    if (isHovered || isTouched) return;
     const timer = setInterval(() => {
       setStartIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
-    }, 3500);
+    }, 3000);
     return () => clearInterval(timer);
-  }, [isHovered, maxStart]);
+  }, [isHovered, isTouched, maxStart]);
 
   const nextSlide = () => {
     setStartIndex((prev) => (prev >= maxStart ? 0 : prev + 1));
@@ -36,61 +37,46 @@ export const BestSellersCarousel: React.FC = () => {
 
   return (
     <section
-      className="py-24 bg-bg-muted border-b border-border select-none overflow-hidden"
+      className="py-16 sm:py-24 bg-bg-muted border-b border-border select-none overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsTouched(true)}
+      onTouchEnd={() => setIsTouched(false)}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-white border border-border text-xs font-bold uppercase tracking-widest text-text-secondary shadow-xs mb-3">
             <Sparkles size={13} className="text-amber-500" /> Curated Architectural Selection
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-text-primary mt-1">
             <WarmUnderline>Best Seller</WarmUnderline>
           </h2>
-          <p className="text-xs sm:text-sm text-text-secondary mt-2">
+          <p className="text-xs sm:text-sm text-text-secondary mt-2 max-w-xl mx-auto">
             Explore our most sought-after luminaires, mouth-blown pendants, and architectural sconces.
           </p>
-
-          {/* Carousel Arrows Centered Below Header */}
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <button
-              onClick={prevSlide}
-              className="p-3 rounded-full bg-white border border-border text-zinc-950 hover:bg-zinc-950 hover:text-white transition-colors shadow-xs"
-              aria-label="Previous products"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="p-3 rounded-full bg-white border border-border text-zinc-950 hover:bg-zinc-950 hover:text-white transition-colors shadow-xs"
-              aria-label="Next products"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Product Cards Container (Mobile Horizontal Swipeable / Desktop Responsive Grid) */}
+        <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible scrollbar-none snap-x snap-mandatory pb-4 sm:pb-0">
           {visibleProducts.map((product) => {
             const imgSrc = product.primaryImage || 'https://adlights.stellarweb.in/wp-content/uploads/2026/08/J-019-2.png';
             return (
               <div
                 key={product.id}
-                className="group rounded-card border border-border bg-white hover:border-zinc-950 transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-xs hover:shadow-xl"
+                className="w-[82vw] max-w-[290px] sm:w-auto shrink-0 snap-start group rounded-card border border-border bg-white hover:border-zinc-950 transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-xs hover:shadow-xl"
               >
                 <div>
-                  <div className="relative w-full h-64 overflow-hidden bg-bg-muted border-b border-border">
+                  <div className="relative w-full h-56 sm:h-64 overflow-hidden bg-bg-muted border-b border-border">
                     <Image
                       src={imgSrc}
                       alt={product.title}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     {product.badge && (
-                      <span className="absolute top-3 left-3 px-3 py-1 bg-zinc-950 text-white rounded-pill text-[10px] font-bold uppercase tracking-wider z-10">
+                      <span className="absolute top-3 left-3 px-2.5 py-1 bg-zinc-950 text-white rounded-pill text-[9px] sm:text-[10px] font-bold uppercase tracking-wider z-10">
                         {product.badge}
                       </span>
                     )}
@@ -144,6 +130,40 @@ export const BestSellersCarousel: React.FC = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Carousel Navigation Controls Brought DOWN Below Products Grid */}
+        <div className="flex flex-col items-center gap-4 mt-10 sm:mt-12">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={prevSlide}
+              className="p-3 rounded-full bg-white border border-border text-zinc-950 hover:bg-zinc-950 hover:text-white transition-colors shadow-md hover:scale-105 active:scale-95"
+              aria-label="Previous products"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="p-3 rounded-full bg-white border border-border text-zinc-950 hover:bg-zinc-950 hover:text-white transition-colors shadow-md hover:scale-105 active:scale-95"
+              aria-label="Next products"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+
+          {/* Indicator Dots */}
+          <div className="flex items-center gap-2">
+            {Array.from({ length: maxStart + 1 }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setStartIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  idx === startIndex ? 'w-8 bg-amber-500' : 'w-2 bg-zinc-300 hover:bg-zinc-400'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
