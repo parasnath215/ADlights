@@ -23,13 +23,13 @@ const BRAND_PARTNERS = [
 
 export const BrandPartners: React.FC = () => {
   return (
-    <section className="py-16 bg-[#faf9f5] border-t border-border overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
+    <section className="py-8 bg-[#faf9f5] border-t border-border overflow-hidden select-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-5">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-white border border-border text-xs font-extrabold uppercase tracking-widest text-amber-700 shadow-xs">
           <Sparkles size={13} className="text-amber-500" /> Authorized Ecosystem
         </span>
 
-        <h2 className="font-display font-extrabold text-3xl sm:text-4xl uppercase tracking-tight text-text-primary mt-2">
+        <h2 className="font-display font-extrabold text-3xl sm:text-4xl uppercase tracking-tight text-text-primary mt-1.5">
           Official <WarmUnderline>Brand Partners</WarmUnderline>
         </h2>
       </div>

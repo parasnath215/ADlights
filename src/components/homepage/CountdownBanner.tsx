@@ -86,7 +86,7 @@ export const CountdownBanner: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative py-20 sm:py-28 bg-zinc-950 text-white overflow-hidden select-none border-b border-zinc-800">
+    <section className="relative py-10 sm:py-14 bg-zinc-950 text-white overflow-hidden select-none border-b border-zinc-800">
       {/* Dark Lifestyle Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -101,7 +101,7 @@ export const CountdownBanner: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-2">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
             <Sparkles size={14} className="text-amber-400" />
             Illuminating Excellence
@@ -164,7 +164,7 @@ export const CountdownBanner: React.FC = () => {
         </div>
 
         {/* Bottom CTA bar */}
-        <div className="mt-14 pt-8 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 bg-zinc-900/50 p-6 sm:p-8 rounded-card border border-zinc-800">
+        <div className="mt-7 pt-4 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-6 bg-zinc-900/50 p-5 sm:p-6 rounded-card border border-zinc-800">
           <div>
             <h3 className="font-display font-bold text-lg uppercase tracking-tight text-white">
               Ready to Upgrade Your Lighting Experience?

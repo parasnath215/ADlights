@@ -23,15 +23,15 @@ const TRUST_ITEMS = [
 
 export const TrustBadges: React.FC = () => {
   return (
-    <section className="py-12 bg-bg-muted border-t border-b border-border select-none">
+    <section className="py-6 bg-bg-muted border-t border-b border-border select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {TRUST_ITEMS.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="flex items-center justify-center gap-4 p-6 rounded-card bg-white border border-border shadow-xs hover:border-zinc-950 transition-all"
+                className="flex items-center justify-center gap-4 p-4 sm:p-5 rounded-card bg-white border border-border shadow-xs hover:border-zinc-950 transition-all"
               >
                 <div className="p-3.5 rounded-full bg-zinc-950 text-white shrink-0 shadow-sm">
                   <Icon size={24} className="text-amber-400" />

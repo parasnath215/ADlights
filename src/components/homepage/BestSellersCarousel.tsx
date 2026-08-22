@@ -29,17 +29,23 @@ export const BestSellersCarousel: React.FC = () => {
   const infiniteProducts = [...PRODUCTS, ...PRODUCTS];
 
   return (
-    <section className="py-16 sm:py-24 bg-bg-muted border-b border-border select-none overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      className="relative py-8 sm:py-12 bg-fixed bg-center bg-cover text-white border-b border-zinc-800 select-none overflow-hidden"
+      style={{ backgroundImage: "url('/images/hero-pendant-banner.png')" }}
+    >
+      {/* Translucent still background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/35 to-zinc-950/55 pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-white border border-border text-xs font-bold uppercase tracking-widest text-text-secondary shadow-xs mb-3">
-            <Sparkles size={13} className="text-amber-500" /> Curated Architectural Selection
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-zinc-950/80 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-400 shadow-lg mb-2.5 backdrop-blur-md">
+            <Sparkles size={13} className="text-amber-400" /> Curated Architectural Selection
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-text-primary mt-1">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-white mt-1 drop-shadow-lg">
             <WarmUnderline>Best Seller</WarmUnderline>
           </h2>
-          <p className="text-xs sm:text-sm text-text-secondary mt-2 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-zinc-100 mt-2 max-w-xl mx-auto font-medium drop-shadow-md">
             Explore our most sought-after luminaires, mouth-blown pendants, and architectural sconces.
           </p>
         </div>
@@ -124,18 +130,18 @@ export const BestSellersCarousel: React.FC = () => {
           </div>
         </div>
 
-        {/* Navigation Controls Below Products (Indicator Dots Completely Removed) */}
-        <div className="flex items-center justify-center gap-3 mt-8 sm:mt-10">
+        {/* Navigation Controls Below Products */}
+        <div className="flex items-center justify-center gap-3 mt-5 sm:mt-6">
           <button
             onClick={scrollLeft}
-            className="p-3 rounded-full bg-white border border-border text-zinc-950 hover:bg-zinc-950 hover:text-white transition-colors shadow-md hover:scale-105 active:scale-95 cursor-pointer"
+            className="p-3 rounded-full bg-zinc-900/90 border border-zinc-700 text-white hover:bg-amber-400 hover:text-zinc-950 hover:border-amber-400 transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-sm"
             aria-label="Scroll left"
           >
             <ChevronLeft size={18} />
           </button>
           <button
             onClick={scrollRight}
-            className="p-3 rounded-full bg-white border border-border text-zinc-950 hover:bg-zinc-950 hover:text-white transition-colors shadow-md hover:scale-105 active:scale-95 cursor-pointer"
+            className="p-3 rounded-full bg-zinc-900/90 border border-zinc-700 text-white hover:bg-amber-400 hover:text-zinc-950 hover:border-amber-400 transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-sm"
             aria-label="Scroll right"
           >
             <ChevronRight size={18} />

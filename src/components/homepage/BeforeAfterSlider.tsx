@@ -31,17 +31,17 @@ export const BeforeAfterSlider: React.FC = () => {
   }, [isDragging, handleMove]);
 
   return (
-    <section id="before-after" className="py-12 sm:py-24 bg-white border-b border-border select-none overflow-hidden">
+    <section id="before-after" className="py-6 sm:py-12 bg-white border-b border-border select-none overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-4 sm:mb-6">
           <span className="text-[10px] sm:text-xs uppercase tracking-widest text-text-secondary font-bold">
             Interactive Light Lab
           </span>
           <h2 className="font-display font-extrabold text-2xl sm:text-5xl uppercase tracking-tight text-text-primary mt-1.5 leading-tight">
             Experience the <WarmUnderline>Atmospheric Difference</WarmUnderline>
           </h2>
-          <p className="text-xs sm:text-sm text-text-secondary mt-2">
+          <p className="text-xs sm:text-sm text-text-secondary mt-1.5">
             Drag the vertical handle left or right to compare natural daylight vs. the warm golden ambient glow of ADlights optics.
           </p>
         </div>
