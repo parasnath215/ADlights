@@ -186,7 +186,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-full bg-zinc-950 text-white p-6 shadow-xl border-t border-zinc-800 animate-slide-up">
+        <div className="lg:hidden absolute inset-x-0 top-full bg-zinc-950 text-white p-6 shadow-xl border-t border-zinc-800 animate-slide-up">
           <div className="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-800">
               Home
