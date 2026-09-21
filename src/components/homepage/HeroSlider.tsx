@@ -140,7 +140,7 @@ export const HeroSlider: React.FC = () => {
       ))}
 
       {/* Hero Content Overlay */}
-      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pl-14 sm:pl-20 lg:pl-24 flex flex-col justify-center items-start pt-12 sm:pt-16 max-w-full overflow-hidden">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pl-[100px] sm:pl-[140px] lg:pl-[160px] flex flex-col justify-center items-start pt-12 sm:pt-16 max-w-full overflow-hidden">
         <div className="max-w-3xl animate-slide-up">
           <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-pill bg-white/10 border border-white/20 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md mb-4 sm:mb-6">
             <Sparkles size={13} className="text-amber-400" />
