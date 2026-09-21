@@ -26,6 +26,12 @@ export interface CustomerOrder {
   items: OrderItem[];
 }
 
+export interface BrandPartner {
+  id: string;
+  name: string;
+  imageUrl: string;
+}
+
 interface AdminContextType {
   products: Product[];
   articles: Article[];
@@ -43,6 +49,10 @@ interface AdminContextType {
   isInWishlist: (productId: string) => boolean;
   syncWooCommerce: () => Promise<void>;
   isSyncing: boolean;
+  partners: BrandPartner[];
+  addPartner: (partner: Omit<BrandPartner, 'id'>) => void;
+  updatePartner: (id: string, updated: Partial<BrandPartner>) => void;
+  deletePartner: (id: string) => void;
 }
 
 const INITIAL_ORDERS: CustomerOrder[] = [
@@ -90,6 +100,11 @@ const INITIAL_ORDERS: CustomerOrder[] = [
   }
 ];
 
+const INITIAL_PARTNERS: BrandPartner[] = [
+  { id: 'bp-1', name: 'Partner Row 1', imageUrl: '/images/brand-partners/partners-row1.png' },
+  { id: 'bp-2', name: 'Partner Row 2', imageUrl: '/images/brand-partners/partners-row2.png' }
+];
+
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
 
 export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -97,6 +112,7 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [articles, setArticles] = useState<Article[]>(INITIAL_ARTICLES);
   const [orders, setOrders] = useState<CustomerOrder[]>(INITIAL_ORDERS);
   const [wishlist, setWishlist] = useState<string[]>([]);
+  const [partners, setPartners] = useState<BrandPartner[]>(INITIAL_PARTNERS);
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
   // Track whether localStorage has been loaded to avoid overwriting before hydration
   const isHydrated = React.useRef(false);
@@ -115,6 +131,9 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
       const savedWishlist = localStorage.getItem('adlights_wishlist');
       if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
+
+      const savedPartners = localStorage.getItem('adlights_admin_partners');
+      if (savedPartners) setPartners(JSON.parse(savedPartners));
     } catch {
       // Fallback
     } finally {
@@ -147,6 +166,12 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       localStorage.setItem('adlights_wishlist', JSON.stringify(wishlist));
     } catch {}
   }, [wishlist]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('adlights_admin_partners', JSON.stringify(partners));
+    } catch {}
+  }, [partners]);
 
   const addProduct = (newP: Omit<Product, 'id'>) => {
     const p: Product = {
@@ -222,6 +247,19 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   };
 
+  const addPartner = (newP: Omit<BrandPartner, 'id'>) => {
+    const p: BrandPartner = { ...newP, id: `bp-${Date.now()}` };
+    setPartners(prev => [p, ...prev]);
+  };
+
+  const updatePartner = (id: string, updated: Partial<BrandPartner>) => {
+    setPartners(prev => prev.map(p => (p.id === id ? { ...p, ...updated } : p)));
+  };
+
+  const deletePartner = (id: string) => {
+    setPartners(prev => prev.filter(p => p.id !== id));
+  };
+
   return (
     <AdminContext.Provider
       value={{
@@ -240,7 +278,11 @@ export const AdminProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         toggleWishlist,
         isInWishlist,
         syncWooCommerce,
-        isSyncing
+        isSyncing,
+        partners,
+        addPartner,
+        updatePartner,
+        deletePartner
       }}
     >
       {children}

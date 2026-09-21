@@ -3,25 +3,16 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
 import { WarmUnderline } from '../ui/WarmUnderline';
-
-const BRAND_PARTNERS = [
-  { name: 'VIHAN', subtitle: 'SPREAD THE LIGHT', accent: 'text-orange-500' },
-  { name: 'KEI', subtitle: 'WIRES & CABLES', accent: 'text-blue-500' },
-  { name: 'RR KĀBEL', subtitle: 'PREMIUM CABLING', accent: 'text-rose-500' },
-  { name: 'WIPRO', subtitle: 'SMART LIGHTING', accent: 'text-purple-500' },
-  { name: 'ATOMBERG', subtitle: 'BLDC TECH', accent: 'text-amber-500' },
-  { name: 'SCHNEIDER ELECTRIC', subtitle: 'INFRASTRUCTURE', accent: 'text-emerald-500' },
-  { name: 'FOCUS LIGHTING', subtitle: 'ARCHITECTURAL LUMINAIRES', accent: 'text-zinc-950' },
-  { name: 'JUPITER', subtitle: 'PRECISION OPTICS', accent: 'text-rose-600' },
-  { name: 'GEO LITING', subtitle: 'LINEAR FIXTURES', accent: 'text-red-500' },
-  { name: 'STAREAGLE', subtitle: 'LED LIGHTING', accent: 'text-amber-600' },
-  { name: 'ORIENT ELECTRIC', subtitle: 'LIGHTING SOLUTIONS', accent: 'text-orange-600' },
-  { name: 'PHILIPS', subtitle: 'HUE & LUMINAIRES', accent: 'text-blue-600' },
-  { name: 'BELEZZA', subtitle: 'LUXURY GLASSWARE', accent: 'text-zinc-800' },
-  { name: 'LEDVANCE', subtitle: 'OSRAM TECH', accent: 'text-amber-500' }
-];
+import { useAdmin } from '../../context/AdminContext';
 
 export const BrandPartners: React.FC = () => {
+  const { partners } = useAdmin();
+
+  if (partners.length === 0) return null;
+
+  // Duplicate the array multiple times to ensure the marquee is wide enough even with few items
+  const displayPartners = [...partners, ...partners, ...partners, ...partners, ...partners, ...partners];
+
   return (
     <section className="py-8 bg-[#faf9f5] border-t border-border overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-5">
@@ -36,21 +27,17 @@ export const BrandPartners: React.FC = () => {
 
       {/* Infinite Scrolling Marquee Slider Ticker */}
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused] items-center">
-        {/* Double array for seamless loop */}
-        {[...BRAND_PARTNERS, ...BRAND_PARTNERS].map((partner, idx) => (
+        {displayPartners.map((partner, idx) => (
           <div
             key={idx}
-            className="flex items-center mx-6 px-6 py-4 rounded-card bg-white border border-border shadow-xs hover:border-zinc-950 hover:shadow-md transition-all shrink-0"
+            className="flex items-center justify-center mx-6 px-6 py-4 rounded-card bg-white border border-border shadow-xs hover:border-zinc-950 hover:shadow-md transition-all shrink-0 min-w-[200px] h-[80px]"
           >
-            <div className="text-left">
-              <span className={`font-display font-extrabold text-lg sm:text-xl uppercase tracking-wider block ${partner.accent}`}>
-                {partner.name}
-              </span>
-              <span className="text-[9px] font-extrabold uppercase tracking-widest text-text-secondary block">
-                {partner.subtitle}
-              </span>
-            </div>
-            <span className="ml-8 text-amber-400 text-xs">✦</span>
+            <img 
+              src={partner.imageUrl} 
+              alt={partner.name} 
+              className="max-h-full max-w-full object-contain mix-blend-multiply" 
+              title={partner.name}
+            />
           </div>
         ))}
       </div>

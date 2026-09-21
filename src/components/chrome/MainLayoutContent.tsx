@@ -8,18 +8,21 @@ import { SearchModal } from './SearchModal';
 import { QuickViewModal } from './QuickViewModal';
 import { useCart } from '../../context/CartContext';
 import { Sparkles } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export const MainLayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { toastMessage } = useCart();
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith('/admin');
 
   return (
     <div className="min-h-screen flex flex-col justify-between relative w-full max-w-full overflow-x-hidden">
       <div>
-        <Header />
+        {!isAdmin && <Header />}
         <main className="w-full max-w-full overflow-x-hidden">{children}</main>
       </div>
 
-      <Footer />
+      {!isAdmin && <Footer />}
 
       {/* Overlays & Modals */}
       <CartDrawer />

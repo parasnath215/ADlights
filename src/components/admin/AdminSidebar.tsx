@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Package, FileText, ShoppingBag, ArrowLeft, RefreshCw, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Package, FileText, ShoppingBag, ArrowLeft, RefreshCw, Sparkles, Users } from 'lucide-react';
 import { useAdmin } from '../../context/AdminContext';
 
 export const AdminSidebar: React.FC = () => {
@@ -14,7 +14,8 @@ export const AdminSidebar: React.FC = () => {
     { label: 'Overview', href: '/admin', icon: LayoutDashboard },
     { label: 'Product Manager', href: '/admin/products', icon: Package },
     { label: 'Journal & Blogs', href: '/admin/blogs', icon: FileText },
-    { label: 'Orders & Fulfillment', href: '/admin/orders', icon: ShoppingBag }
+    { label: 'Orders & Fulfillment', href: '/admin/orders', icon: ShoppingBag },
+    { label: 'Brand Partners', href: '/admin/partners', icon: Users }
   ];
 
   return (
