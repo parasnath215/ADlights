@@ -4,12 +4,9 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Instagram, Twitter, Facebook, Youtube, Mail, Phone, MapPin, Shield } from 'lucide-react';
-import { useCart } from '../../context/CartContext';
-
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
-  const { currency, setCurrency, language, setLanguage } = useCart();
 
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,7 +19,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-zinc-950 text-white pt-20 pb-10 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-zinc-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-zinc-800">
           {/* Brand Column (2 cols) */}
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="flex items-center gap-2 group">
@@ -87,19 +84,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2: Collections */}
-          <div>
-            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-zinc-200 mb-4">
-              Our Products
-            </h4>
-            <ul className="space-y-2.5 text-xs text-zinc-400 font-medium">
-              <li><Link href="/shop?category=Pendant" className="hover:text-white transition-colors">Hanging Lights</Link></li>
-              <li><Link href="/shop?category=Wall Sconces" className="hover:text-white transition-colors">Wall Lights</Link></li>
-              <li><Link href="/shop?category=Pendant" className="hover:text-white transition-colors">Chandeliers</Link></li>
-              <li><Link href="/shop?category=Table & Desk" className="hover:text-white transition-colors">Table & Floor Lamps</Link></li>
-              <li><Link href="/shop?category=Architectural" className="hover:text-amber-300 transition-colors">Facade & Architectural</Link></li>
-            </ul>
-          </div>
+
 
           {/* Column 3: Concierge & Trade */}
           <div>
@@ -143,27 +128,6 @@ export const Footer: React.FC = () => {
             <span>•</span>
             <Link href="/contact" className="hover:text-zinc-300">Privacy Policy</Link>
             <Link href="/contact" className="hover:text-zinc-300 font-semibold">Terms of Service</Link>
-          </div>
-
-          {/* Region / Currency Selectors at bottom */}
-          <div className="flex items-center gap-4">
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="bg-zinc-900 border border-zinc-800 text-zinc-300 rounded px-2 py-1 focus:outline-none text-[11px]"
-            >
-              <option value="EN">Language: English (EN)</option>
-              <option value="HI">Language: Hindi (HI)</option>
-            </select>
-
-            <select
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              className="bg-zinc-900 border border-zinc-800 text-zinc-300 rounded px-2 py-1 focus:outline-none text-[11px] font-mono"
-            >
-              <option value="INR (₹)">Currency: INR (₹)</option>
-              <option value="USD ($)">Currency: USD ($)</option>
-            </select>
           </div>
         </div>
       </div>
