@@ -21,6 +21,11 @@ module.exports = {
           soft: "var(--accent-soft)",
         },
         border: "var(--border)",
+        zinc: {
+          800: '#1d4a46',
+          900: '#153532',
+          950: '#0f2725',
+        }
       },
       borderRadius: {
         pill: "var(--radius-pill)",

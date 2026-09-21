@@ -109,7 +109,7 @@ export const TestimonialSlider: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
           <span className="inline-flex items-center gap-2 text-amber-400 mb-2 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-pill bg-zinc-900 border border-zinc-800">
@@ -180,37 +180,35 @@ export const TestimonialSlider: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom Navigation: Left Arrow, Indicators, Right Arrow */}
-        <div className="flex items-center justify-center gap-4 mt-6 sm:mt-8">
-          <button
-            onClick={handlePrev}
-            className="p-3 rounded-full bg-zinc-900 border border-zinc-800 text-white hover:bg-amber-400 hover:text-zinc-950 hover:border-amber-400 transition-all shadow-lg cursor-pointer hover:scale-105 active:scale-95"
-            aria-label="Previous Reviews"
-          >
-            <ChevronLeft size={18} />
-          </button>
+        {/* Navigation Arrows (Absolute Center Left/Right) */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-2 sm:left-4 top-[55%] -translate-y-1/2 p-3 rounded-full bg-zinc-900 border border-zinc-800 text-white hover:bg-amber-400 hover:text-zinc-950 hover:border-amber-400 transition-all shadow-lg cursor-pointer hover:scale-105 active:scale-95 z-20 hidden sm:block"
+          aria-label="Previous Reviews"
+        >
+          <ChevronLeft size={18} />
+        </button>
 
-          {/* Carousel Indicators */}
-          <div className="flex items-center gap-2">
-            {Array.from({ length: maxStart + 1 }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setStartIndex(idx)}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === startIndex ? 'w-8 bg-amber-400' : 'w-2 bg-zinc-800 hover:bg-zinc-600'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
+        <button
+          onClick={handleNext}
+          className="absolute right-2 sm:right-4 top-[55%] -translate-y-1/2 p-3 rounded-full bg-zinc-900 border border-zinc-800 text-white hover:bg-amber-400 hover:text-zinc-950 hover:border-amber-400 transition-all shadow-lg cursor-pointer hover:scale-105 active:scale-95 z-20 hidden sm:block"
+          aria-label="Next Reviews"
+        >
+          <ChevronRight size={18} />
+        </button>
 
-          <button
-            onClick={handleNext}
-            className="p-3 rounded-full bg-zinc-900 border border-zinc-800 text-white hover:bg-amber-400 hover:text-zinc-950 hover:border-amber-400 transition-all shadow-lg cursor-pointer hover:scale-105 active:scale-95"
-            aria-label="Next Reviews"
-          >
-            <ChevronRight size={18} />
-          </button>
+        {/* Carousel Indicators */}
+        <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8">
+          {Array.from({ length: maxStart + 1 }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setStartIndex(idx)}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                idx === startIndex ? 'w-8 bg-amber-400' : 'w-2 bg-zinc-800 hover:bg-zinc-600'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

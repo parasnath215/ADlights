@@ -183,11 +183,11 @@ export const HeroSlider: React.FC = () => {
         ))}
       </div>
 
-      {/* Prev/Next Arrows Bottom Corners */}
-      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-30 flex justify-between pointer-events-none">
+      {/* Prev/Next Arrows Center Left/Right */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-[60px] sm:left-[80px] right-4 sm:right-8 z-30 flex justify-between pointer-events-none">
         <button
           onClick={handlePrev}
-          className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
+          className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all shadow-lg"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={18} />
@@ -195,7 +195,7 @@ export const HeroSlider: React.FC = () => {
 
         <button
           onClick={handleNext}
-          className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all"
+          className="pointer-events-auto p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-zinc-950 backdrop-blur-md border border-white/20 transition-all shadow-lg"
           aria-label="Next Slide"
         >
           <ChevronRight size={18} />

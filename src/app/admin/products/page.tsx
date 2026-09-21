@@ -298,7 +298,7 @@ export default function AdminProductsPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-bg-muted select-none">
+    <div className="flex flex-col min-h-screen bg-bg-muted select-none pt-16">
       <AdminSidebar />
 
       <main className="flex-1 p-6 sm:p-8 overflow-y-auto">
@@ -492,18 +492,10 @@ export default function AdminProductsPage() {
           </table>
         </div>
 
-        {/* FULL PRODUCT UPLOAD & EDIT DRAWER / MODAL */}
+        {/* FULL PRODUCT UPLOAD & EDIT FULL SCREEN */}
         {isFormOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div
-              onClick={() => {
-                setIsFormOpen(false);
-                setEditingProduct(null);
-              }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-xs"
-            />
-
-            <div className="relative w-full max-w-4xl bg-white rounded-card shadow-2xl z-10 border border-border flex flex-col max-h-[92vh] overflow-hidden">
+          <div className="fixed inset-0 z-50 flex flex-col bg-bg-muted">
+            <div className="relative w-full h-full bg-white flex flex-col overflow-hidden">
               {/* Modal Top Bar */}
               <div className="flex items-center justify-between p-5 bg-zinc-950 text-white border-b border-zinc-800">
                 <div className="flex items-center gap-3">

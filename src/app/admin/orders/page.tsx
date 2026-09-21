@@ -11,7 +11,7 @@ export default function AdminOrdersPage() {
   const [selectedOrder, setSelectedOrder] = useState<CustomerOrder | null>(null);
 
   return (
-    <div className="flex min-h-screen bg-bg-muted">
+    <div className="flex flex-col min-h-screen bg-bg-muted select-none pt-16">
       <AdminSidebar />
 
       <main className="flex-1 p-8 overflow-y-auto">

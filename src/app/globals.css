@@ -7,9 +7,9 @@
 :root {
   --bg: #ffffff;
   --bg-muted: #f7f7f5;      /* light gray sections */
-  --text-primary: #171717;
+  --text-primary: #153532;
   --text-secondary: #6b6b6b;
-  --accent: #171717;         /* black-on-white, high contrast, minimal */
+  --accent: #153532;         /* dark green shade */
   --accent-soft: #f2c98a;    /* warm gold/tan underline accent */
   --border: #e8e8e6;
   --radius-pill: 999px;      /* buttons are full-pill shaped */

@@ -18,24 +18,20 @@ export const AdminSidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="w-64 bg-zinc-950 text-white min-h-screen p-6 flex flex-col justify-between border-r border-zinc-800">
-      <div>
+    <header className="fixed top-0 left-0 right-0 h-16 bg-zinc-950 text-white flex items-center justify-between px-6 z-40 border-b border-zinc-800">
+      <div className="flex items-center gap-8">
         {/* Admin Brand Logo */}
-        <div className="flex items-center gap-2 mb-8">
+        <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-white text-zinc-950 flex items-center justify-center">
             <Sparkles size={16} className="text-amber-400" />
           </div>
-          <span className="font-display font-extrabold text-xl uppercase tracking-tighter">
+          <span className="font-display font-extrabold text-xl uppercase tracking-tighter hidden sm:block">
             AD<span className="font-light">admin</span>
           </span>
         </div>
 
-        <span className="text-[10px] uppercase font-bold tracking-widest text-zinc-500 block mb-4">
-          Management Portal
-        </span>
-
         {/* Navigation Links */}
-        <nav className="space-y-2">
+        <nav className="flex items-center gap-2">
           {links.map((link) => {
             const Icon = link.icon;
             const isActive = pathname === link.href;
@@ -44,29 +40,29 @@ export const AdminSidebar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-pill text-xs font-bold transition-all ${
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-pill text-xs font-bold transition-all ${
                   isActive
                     ? 'bg-amber-400 text-zinc-950 shadow-md'
                     : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
                 }`}
               >
-                <Icon size={16} />
-                <span>{link.label}</span>
+                <Icon size={14} />
+                <span className="hidden md:block">{link.label}</span>
               </Link>
             );
           })}
         </nav>
       </div>
 
-      <div className="space-y-4 pt-6 border-t border-zinc-800">
+      <div className="flex items-center gap-4">
         {/* WooCommerce Sync Button */}
         <button
           onClick={() => syncWooCommerce()}
           disabled={isSyncing}
-          className="w-full py-2.5 px-3 rounded-pill bg-zinc-900 border border-zinc-800 hover:border-amber-400 text-amber-400 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+          className="px-3 py-1.5 rounded-pill bg-zinc-900 border border-zinc-800 hover:border-amber-400 text-amber-400 hover:text-white text-xs font-semibold flex items-center gap-2 transition-all disabled:opacity-50"
         >
           <RefreshCw size={14} className={isSyncing ? 'animate-spin' : ''} />
-          <span>{isSyncing ? 'Syncing...' : 'Sync WooCommerce'}</span>
+          <span className="hidden md:block">{isSyncing ? 'Syncing...' : 'Sync'}</span>
         </button>
 
         {/* Back to Live Store Button */}
@@ -75,9 +71,9 @@ export const AdminSidebar: React.FC = () => {
           className="flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-white transition-colors"
         >
           <ArrowLeft size={14} />
-          <span>Return to Live Storefront</span>
+          <span className="hidden md:block">Live Store</span>
         </Link>
       </div>
-    </aside>
+    </header>
   );
 };

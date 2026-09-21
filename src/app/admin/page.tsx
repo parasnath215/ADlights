@@ -12,7 +12,7 @@ export default function AdminOverviewPage() {
   const totalRevenue = orders.reduce((sum, o) => sum + o.totalAmount, 0);
 
   return (
-    <div className="flex min-h-screen bg-bg-muted">
+    <div className="flex flex-col min-h-screen bg-bg-muted pt-16">
       <AdminSidebar />
 
       <main className="flex-1 p-8 overflow-y-auto">

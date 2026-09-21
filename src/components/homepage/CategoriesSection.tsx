@@ -60,22 +60,18 @@ const CATEGORIES = [
 export const CategoriesSection: React.FC = () => {
   return (
     <section
-      className="relative py-10 sm:py-12 bg-fixed bg-center bg-cover text-white border-b border-zinc-800 select-none overflow-hidden"
-      style={{ backgroundImage: "url('/images/hero-pendant-banner.png')" }}
+      className="relative py-10 sm:py-12 bg-white text-zinc-950 border-b border-border select-none overflow-hidden"
     >
-      {/* Translucent still background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/50 via-zinc-950/35 to-zinc-950/55 pointer-events-none" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-zinc-950/80 border border-white/20 text-xs font-bold uppercase tracking-widest text-amber-400 backdrop-blur-md shadow-lg">
-            <Sparkles size={13} className="text-amber-400" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-zinc-100 border border-border text-xs font-bold uppercase tracking-widest text-amber-500 shadow-sm">
+            <Sparkles size={13} className="text-amber-500" />
             Curated Collections
           </span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-white mt-2 drop-shadow-lg">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-zinc-950 mt-2">
             Explore By <WarmUnderline>Category</WarmUnderline>
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-100 mt-2 max-w-xl mx-auto font-medium drop-shadow-md">
+          <p className="text-xs sm:text-sm text-zinc-600 mt-2 max-w-xl mx-auto font-medium">
             Discover precision-engineered luminaires tailored for modern interiors, staircases, and outdoor architectural spaces.
           </p>
         </div>
